@@ -36,20 +36,20 @@ class CreateAndDeleteUserEndpoints:
     dict_for_registration, dict_for_authorization = helper.create_json_for_registration_and_authorization()
 
     def create_user_from_api(self):
-        self.response = requests.post(url=CreateAndDeleteUserData.REGISTRATION_URL,
+        response = requests.post(url=CreateAndDeleteUserData.REGISTRATION_URL,
                                       json=self.dict_for_registration)
-        response_json = self.response.json()
+        response_json = response.json()
         self.token = response_json['accessToken']
 
     def authorization_user(self):
-        self.response = requests.post(url=CreateAndDeleteUserData.AUTHORIZATION_URL,
+        response = requests.post(url=CreateAndDeleteUserData.AUTHORIZATION_URL,
                                       json=self.dict_for_authorization)
-        response_json = self.response.json()
+        response_json = response.json()
         self.token = response_json['accessToken']
 
         return self.token
 
     def delete_user(self):
-        self.response = requests.delete(url=CreateAndDeleteUserData.DELETE_URL,
+        response = requests.delete(url=CreateAndDeleteUserData.DELETE_URL,
                                         headers={"authorization": f'{self.token}'})
-        assert self.response.status_code == 202
+        assert response.status_code == 202

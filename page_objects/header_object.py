@@ -19,7 +19,7 @@ class HeaderObjectData:
     HEADER_OBJECT_WAIT_CONSTRUCTOR_ELEMENT = (By.XPATH, '//h1[text()="Соберите бургер"]')
     HEADER_OBJECT_WAIT_ORDERS_LIST_ELEMENT = (By.XPATH, '//h1[text()="Лента заказов"]')
     HEADER_OBJECT_WAIT_PERSONAL_ACCOUNT_ELEMENT = (By.XPATH, './/h2[text()="Вход"]')
-    HEADER_OBJECT_WAIT_AUTHORIZE_USER_PERSONAL_ACCOUNT_ELEMENT = (By.XPATH, '')
+    HEADER_OBJECT_WAIT_AUTHORIZE_USER_PERSONAL_ACCOUNT_ELEMENT = (By.XPATH, '//*[text()="Профиль"]')
 
 
 class HeaderObject:
@@ -51,8 +51,7 @@ class HeaderObject:
     def assert_url(self, elements_locator, expected_url):
         WebDriverWait(driver=self.driver, timeout=self.timeout).until(
             EC.visibility_of_element_located(elements_locator))
-        current_url = self.get_page_url()
-        assert current_url == expected_url
+        assert self.get_page_url() == expected_url
 
     def click_constructor_element(self):
         self.click_some_element(HeaderObjectData.HEADER_OBJECT_CONSTRUCTOR)
