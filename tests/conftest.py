@@ -7,8 +7,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
-from page_objects.personal_account_object import PersonalAccountObject as PAO
-from page_objects.personal_account_object import PersonalAccountData as PAD
+from page_objects.create_order_object import CreateOrderObject as PageObject
+from objects_data import CreateOrderData as DATA
 from api_endpoints.api_endpoints import CreateAndDeleteUserEndpoints as API
 
 
@@ -33,7 +33,7 @@ def start_driver_and_create_page(request):
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
         print(f'Sistem hasn`t "{browser_name}", test run with Chrome driver!!!')
 
-    page = PAO(driver)
+    page = PageObject(driver)
 
     yield page
     driver.quit()
@@ -50,7 +50,7 @@ def is_create_user(start_driver_and_create_page):
 @pytest.fixture
 def is_for_reset_password(is_create_user):
     page, api_user = is_create_user
-    page.go_to_site(PAD.AUTHORIZATION_URL)
+    page.go_to_site(DATA.AUTHORIZATION_URL)
     page.click_recovery_password_link()
     inputted_data = api_user.dict_for_authorization['email']
     page.add_email_into_email_field(inputted_data)
