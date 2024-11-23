@@ -7,8 +7,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
-from page_objects.orders_list_object import OrdersListObject as PageObject
-from objects_data import OrdersListData as DATA
+from page_objects.order_feed_object import OrderFeedObject as PageObject
+from objects_data import OrderFeedData as DATA
 from api_endpoints.api_endpoints import CreateAndDeleteUserEndpoints as API
 
 

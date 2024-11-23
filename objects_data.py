@@ -110,5 +110,5 @@ class CreateOrderData(PersonalAccountData):
     ACCEPT_ORDER_EXIT_BUTTON = (By.XPATH, '//button[@type="button"][1]')
 
 
-class OrdersListData(CreateOrderData):
-    pass
+class OrderFeedData(CreateOrderData):
+    ORDERS_LIST_ORDER_CART = '//li[contains(@class,"OrderHistory")]'
