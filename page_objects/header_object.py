@@ -5,6 +5,7 @@ from objects_data import HeaderObjectData as HOD
 
 class HeaderObject:
     timeout = 10
+    order_number = '9999'
 
     def __init__(self, driver):
         self.driver = driver

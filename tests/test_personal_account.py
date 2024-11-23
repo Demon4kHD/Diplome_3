@@ -1,5 +1,4 @@
-from page_objects.password_recovery_object import PasswordRecoveryObject as PRO
-from page_objects.password_recovery_object import PasswordRecoveryData as PRD
+from objects_data import OrdersListData as DATA
 
 
 class TestPersonalAccount:
@@ -14,6 +13,13 @@ class TestPersonalAccount:
         page.click_personal_account_element()
         page.click_orders_history()
         page.assert_active_element_is_orders_history()
+
+    def test_click_orders_history_link_for_user_with_order(self, is_authorize_user_created_order):
+        page, user = is_authorize_user_created_order
+        page.go_to_site(DATA.BASE_URL)
+        page.click_personal_account_element()
+        page.click_orders_history()
+        page.assert_order_number_from_personal_account()
 
     def test_click_exit_button(self, is_authorize_user):
         page, api_user = is_authorize_user

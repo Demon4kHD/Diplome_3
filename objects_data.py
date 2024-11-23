@@ -70,16 +70,23 @@ class PersonalAccountData(PasswordRecoveryData):
     ORDERS_HISTORY_ACTIVE_LINK = (By.XPATH, '//a[contains(@class,"Account_link_active")]')
     ORDERS_HISTORY_BUTTON = PasswordRecoveryData.PERSONAL_HISTORY_ORDERS_LINK_ELEMENT
     ORDERS_HISTORY_BUTTON_TEXT = "История заказов"
+    ORDERS_HISTORY_NUMBER_ORDER = (By.XPATH, '//p[@class="text text_type_digits-default"]')
 
 class CreateOrderData(PersonalAccountData):
 
     """Ingredients"""
     CHAPTER_INGREDIENTS_MAIN = (By.XPATH, '//span[text()="Начинки"]')
     INGREDIENT_BUN = (By.XPATH, '//p[text()="Флюоресцентная булка R2-D3"]')
+    """Пытался найти каунтер через соседей, но хоть элементы и на одном уровне - элемент не находится.
+    Пример:
+    test1_bun = (By.XPATH, '//p[text()="Флюоресцентная булка R2-D3"]/following-sibling::div')
+    test2_bun = (By.XPATH, '//p[text()="Флюоресцентная булка R2-D3"]/following-sibling::div//p')
+    Пришлось делать через индекс элемента в доме"""
+    test3_bun = (By.XPATH, '//div[contains(@class,"counter_default")][1]//p[contains(@class,"counter_counter")]')
     INGREDIENT_SAUSE = (By.XPATH, '//p[text()="Соус Spicy-X"]')
     INGREDIENT_MAIN = (By.XPATH, '//p[text()="Мясо бессмертных моллюсков Protostomia"]')
 
-    """Dynamic window"""
+    """Dynamic window about ingredient"""
     DYNAMIC_WAIT_ELEMENT = (By.XPATH, '//h2[text()="Детали ингредиента"]')
     DYNAMIC_EXIT_BUTTON = (By.XPATH,
                            '//section[contains(@class,"Modal_modal_opened")]//button[@type="button"]')
@@ -92,3 +99,16 @@ class CreateOrderData(PersonalAccountData):
     DYNAMIC_CARBOHYDRATES_PRODUCT_COMPOSITION_TEXT = (By.XPATH,
                                                       '//p[text()="Углеводы, г"]/following-sibling::p')
     DYNAMIC_BUN_PRODUCT_COMPOSITION_DATA = ['643', '85', '26', '44']
+
+    """BASKET"""
+    BURGER_BASKET = (By.XPATH, '//div[@class="constructor-element constructor-element_pos_top"]')
+    BASKET_ACCEPT_BUTTON = (By.XPATH, '//button[text()="Оформить заказ"]')
+
+    """Dynamic window accept order"""
+    ACCEPT_WAIT_ELEMENT = (By.XPATH, '/img[@src="https://code.s3.yandex.net/react/code/bun-01.png"]')
+    ACCEPT_ORDER_NUMBER = (By.XPATH, '//h2[contains(@class,"Modal_modal__title_shadow")]')
+    ACCEPT_ORDER_EXIT_BUTTON = (By.XPATH, '//button[@type="button"][1]')
+
+
+class OrdersListData(CreateOrderData):
+    pass

@@ -37,3 +37,14 @@ class TestGeneralFunctions:
         page.click_to_ingredient(DATA.INGREDIENT_BUN)
         page.click_exit_button_in_dynamic_window()
         page.assert_close_dynamic_window()
+
+    def test_increasing_account_ingredient(self, start_driver_and_create_page):
+        page = start_driver_and_create_page
+        page.go_to_site(DATA.BASE_URL)
+        page.dragging_ingredient(DATA.INGREDIENT_BUN, DATA.BURGER_BASKET)
+        page.assert_count_of_bun()
+
+    def test_authorize_user_can_create_order(self, is_authorize_user):
+        page, user = is_authorize_user
+        page.create_burger()
+        page.assert_burger_is_created()

@@ -7,8 +7,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
-from page_objects.create_order_object import CreateOrderObject as PageObject
-from objects_data import CreateOrderData as DATA
+from page_objects.orders_list_object import OrdersListObject as PageObject
+from objects_data import OrdersListData as DATA
 from api_endpoints.api_endpoints import CreateAndDeleteUserEndpoints as API
 
 
@@ -61,5 +61,13 @@ def is_for_reset_password(is_create_user):
 def is_authorize_user(is_create_user):
     page, api_user = is_create_user
     page.authorization_user(api_user.dict_for_authorization)
+
+    return page, api_user
+
+@pytest.fixture
+def is_authorize_user_created_order(is_authorize_user):
+    page, api_user = is_authorize_user
+    page.create_burger()
+    page.click_some_element(DATA.ACCEPT_ORDER_EXIT_BUTTON)
 
     return page, api_user
