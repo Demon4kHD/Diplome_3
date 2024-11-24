@@ -1,4 +1,4 @@
-from objects_data import OrdersListData as DATA
+from objects_data import OrderFeedData as DATA
 
 
 class TestPersonalAccount:

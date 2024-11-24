@@ -1,7 +1,6 @@
-import pytest
 import requests
 
-import helper
+from helper import Helper
 
 
 class CreateAndDeleteUserData:
@@ -31,11 +30,11 @@ class CreateAndDeleteUserData:
 
 
 
-class CreateAndDeleteUserEndpoints:
+class CreateAndDeleteUserEndpoints(Helper):
     token = ''
-    dict_for_registration, dict_for_authorization = helper.create_json_for_registration_and_authorization()
 
     def create_user_from_api(self):
+        self.dict_for_registration, self.dict_for_authorization = self.create_json_for_registration_and_authorization()
         response = requests.post(url=CreateAndDeleteUserData.REGISTRATION_URL,
                                       json=self.dict_for_registration)
         response_json = response.json()

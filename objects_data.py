@@ -107,8 +107,16 @@ class CreateOrderData(PersonalAccountData):
     """Dynamic window accept order"""
     ACCEPT_WAIT_ELEMENT = (By.XPATH, '/img[@src="https://code.s3.yandex.net/react/code/bun-01.png"]')
     ACCEPT_ORDER_NUMBER = (By.XPATH, '//h2[contains(@class,"Modal_modal__title_shadow")]')
-    ACCEPT_ORDER_EXIT_BUTTON = (By.XPATH, '//button[@type="button"][1]')
+    ACCEPT_ORDER_EXIT_BUTTON = (By.XPATH, '//div//button[@type="button"]')
 
 
 class OrderFeedData(CreateOrderData):
     ORDERS_LIST_ORDER_CART = '//li[contains(@class,"OrderHistory")]'
+    ORDERS_FEED_ASSERT_ELEMENT = ('xpath', '//div[contains(@class,"Modal_orderBox")]//p[3]')
+    ORDERS_FEED_STRUCTURE_ELEMENT = 'Cостав'
+    ORDERS_FEED_TWO_ORDERS_LOCATOR_1 = '//p[text()="'
+    ORDERS_FEED_TWO_ORDERS_LOCATOR_2 = '"]'
+    ORDERS_HISTORY_NUMBER_ORDER_PATTEN = '//p[@class="text text_type_digits-default"]'
+    ORDERS_FEED_TODAY_NUMBERS = (By.XPATH, '//p[text()="Выполнено за сегодня:"]/following-sibling::p')
+    ORDERS_FEED_NOT_TODAY_NUMBERS = (By.XPATH, '//p[text()="Выполнено за все время:"]/following-sibling::p')
+

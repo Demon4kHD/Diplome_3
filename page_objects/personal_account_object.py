@@ -28,3 +28,6 @@ class PersonalAccountObject(PRO):
     def assert_order_number_from_personal_account(self):
         checking_number = "0" + self.order_number
         assert self.get_order_number_from_personal_account() == checking_number
+
+    def click_profile_link(self):
+        self.click_some_element(DATA.PERSONAL_PROFILE_LINK_ELEMENT)

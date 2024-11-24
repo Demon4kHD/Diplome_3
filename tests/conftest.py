@@ -71,3 +71,22 @@ def is_authorize_user_created_order(is_authorize_user):
     page.click_some_element(DATA.ACCEPT_ORDER_EXIT_BUTTON)
 
     return page, api_user
+
+@pytest.fixture
+def authorize_user_created_two_orders(is_authorize_user):
+    page, api_user = is_authorize_user
+    page.create_two_orders()
+
+    return page, api_user
+
+@pytest.fixture
+def is_authorize_user_and_receiving_number_of_orders(is_authorize_user):
+    page, api_user = is_authorize_user
+    page.open_new_tab()
+    page.go_to_site(DATA.BASE_URL)
+    page.click_order_list_element()
+    page.counter_completed_today = page.get_numbers_order_feed(True)
+    page.counter_is_completed_for_entire_time = page.get_numbers_order_feed(False)
+    page.switch_tab()
+
+    return page, api_user
