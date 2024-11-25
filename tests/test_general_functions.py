@@ -27,7 +27,7 @@ class TestGeneralFunctions:
     def test_click_to_orders_list(self, start_driver_and_create_page):
         page = start_driver_and_create_page
         page.go_to_site(DATA.BASE_URL)
-        page.click_oder_list_element()
+        page.click_order_list_element()
         page.assert_goes_to_orders_list_page()
 
     @allure.title('Клик на ингредиент, появится всплывающее окно с деталями')
