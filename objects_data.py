@@ -119,4 +119,4 @@ class OrderFeedData(CreateOrderData):
     ORDERS_HISTORY_NUMBER_ORDER_PATTEN = '//p[@class="text text_type_digits-default"]'
     ORDERS_FEED_TODAY_NUMBERS = (By.XPATH, '//p[text()="Выполнено за сегодня:"]/following-sibling::p')
     ORDERS_FEED_NOT_TODAY_NUMBERS = (By.XPATH, '//p[text()="Выполнено за все время:"]/following-sibling::p')
-
+    ORDERS_FEED_ORDER_IN_WORK = (By.XPATH, '//li[text()="Все текущие заказы готовы!"]')
