@@ -10,16 +10,6 @@ class OrderFeedObject(PageObject, Helper):
     def open_choiced_order_cart(self, cart_locator):
         self.click_some_element(cart_locator)
 
-    def create_random_locator_for_order_feed(self):
-        random_locator = self.create_orders_locator()
-
-        return random_locator
-
-    def create_static_locator_for_order_feed(self, number):
-        orders_locator = self.create_orders_locator(number)
-
-        return orders_locator
-
     def assert_dynamic_window_text(self):
         current_text = self.get_text_some_element(DATA.ORDERS_FEED_ASSERT_ELEMENT)
         assert current_text == DATA.ORDERS_FEED_STRUCTURE_ELEMENT
@@ -58,3 +48,9 @@ class OrderFeedObject(PageObject, Helper):
     def get_numbers_order_feed(self, today=True):
         return (self.get_text_some_element(DATA.ORDERS_FEED_TODAY_NUMBERS) if today == True
                 else self.get_text_some_element(DATA.ORDERS_FEED_NOT_TODAY_NUMBERS))
+
+    def assert_order_in_work(self):
+        locator = ('xpath', f'//li[text()="{self.order_number}"]')
+        number_order_in_work = self.get_text_some_element(locator)
+
+        assert number_order_in_work == "0" + self.order_number
