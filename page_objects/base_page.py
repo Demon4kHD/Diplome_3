@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from objects_data import HeaderObjectData as DATA
 
 
-class HeaderObject:
+class BasePage:
     timeout = 20
     order_number = '9999'
     original_window = None

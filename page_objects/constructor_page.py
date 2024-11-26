@@ -2,12 +2,12 @@ import allure
 from selenium.webdriver.support.wait import WebDriverWait
 
 from objects_data import CreateOrderData as DATA
-from page_objects.personal_account_object import PersonalAccountObject as PAGE
+from page_objects.account_page import AccountPage as PAGE
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import ActionChains
 
 
-class CreateOrderObject(PAGE):
+class ConstructorPage(PAGE):
     @allure.step('Проверка перехода на страницу Конструктор')
     def assert_goes_to_constructor_page(self):
         self.assert_url(DATA.HEADER_OBJECT_WAIT_CONSTRUCTOR_ELEMENT, DATA.CONSTRUCTOR_URL)

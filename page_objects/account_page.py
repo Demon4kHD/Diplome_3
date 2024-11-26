@@ -1,10 +1,10 @@
 import allure
 
 from objects_data import PersonalAccountData as DATA
-from page_objects.password_recovery_object import PasswordRecoveryObject as PRO
+from page_objects.password_recovery_page import PasswordRecoveryPage as PRO
 
 
-class PersonalAccountObject(PRO):
+class AccountPage(PRO):
     @allure.step('Клик на историю заказов')
     def click_orders_history(self):
         self.click_some_element(DATA.ORDERS_HISTORY_BUTTON)

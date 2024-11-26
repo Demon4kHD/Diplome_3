@@ -1,10 +1,10 @@
 import allure
 
 from objects_data import AuthorizationObjectData as DATA
-from page_objects.header_object import HeaderObject as PageObject
+from page_objects.base_page import BasePage as PageObject
 
 
-class AuthorizationObject(PageObject):
+class AuthorizationPage(PageObject):
     @allure.step('Переход на страницу авторизации')
     def go_to_authorization_page(self):
         self.go_to_site(DATA.AUTHORIZATION_URL)

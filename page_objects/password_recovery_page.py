@@ -1,10 +1,10 @@
 import allure
 
 from objects_data import PasswordRecoveryData as DATA
-from page_objects.authorization_object import AuthorizationObject as PageObject
+from page_objects.authorization_page import AuthorizationPage as PageObject
 
 
-class PasswordRecoveryObject(PageObject):
+class PasswordRecoveryPage(PageObject):
     @allure.step('Ввод почты в поле ввода')
     def add_email_into_email_field(self, data):
         self.add_data_into_data_field(DATA.FORGOT_PASSWORD_PAGE_EMAIL_INPUT, data)
