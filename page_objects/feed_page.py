@@ -1,10 +1,10 @@
 import allure
 
 from objects_data import OrderFeedData as DATA
-from page_objects.create_order_object import CreateOrderObject as PageObject
+from page_objects.constructor_page import ConstructorPage as PageObject
 from helper import Helper
 
-class OrderFeedObject(PageObject, Helper):
+class FeedPage(PageObject, Helper):
     list_orders = []
     counter_is_completed_for_entire_time = ''
     counter_completed_today = ''
