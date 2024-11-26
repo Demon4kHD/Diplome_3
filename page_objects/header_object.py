@@ -5,7 +5,7 @@ from objects_data import HeaderObjectData as DATA
 
 
 class HeaderObject:
-    timeout = 10
+    timeout = 20
     order_number = '9999'
     original_window = None
     new_widow = None

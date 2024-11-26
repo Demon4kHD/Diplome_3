@@ -14,8 +14,8 @@ from api_endpoints.api_endpoints import CreateAndDeleteUserEndpoints as API
 
 
 @allure.step('Выбор и запуск выбранного драйвера')
-@pytest.fixture(params=["chrome"])
-# @pytest.fixture(params=['chrome', "firefox"]) Планировал так, но firefox постоянно падает на этом сайте
+# @pytest.fixture(params=["chrome"])
+@pytest.fixture(params=['chrome', "firefox"]) # Планировал так, но firefox постоянно падает на этом сайте
 def start_driver_and_create_page(request):
     browser_name = request.param
     driver = None
